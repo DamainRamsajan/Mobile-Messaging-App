@@ -3,12 +3,12 @@ import { KeyboardAvoidingView } from 'react-native';
 import { StyleSheet, Text, View } from 'react-native';
 import {Button, Input, Image} from "react-native-elements";
 
-const LoginScreen = () => {
+const LoginScreen = ({navigation}) => {
     const [email, setEmail] = useState ("");
     const [password, setPassword] = useState ("");
 
     return (
-        <KeyboardAvoidingView behavior ="padding" enabled style= {styles.container}>
+        <KeyboardAvoidingView behavior ="padding" style= {styles.container}>
             <View>
                 <Image 
                     style ={{width: 400, height: 200}}
@@ -34,7 +34,7 @@ const LoginScreen = () => {
                 </View>
 
                 <Button containerStyle = {styles.button} title = "Login"/>
-                <Button containerStyle = {styles.button} title = "Register" type = "outline"/>
+                <Button onPress = {() => navigation.navigate("Register")} containerStyle = {styles.button} title = "Register" type = "outline"/>
 
             </View>
         </KeyboardAvoidingView>
