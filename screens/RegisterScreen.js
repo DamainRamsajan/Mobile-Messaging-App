@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar'
-import React, { useState } from 'react'
+import React, { useLayoutEffect, useState } from 'react'
 import { StyleSheet, View,KeyboardAvoidingView } from 'react-native';
 import {Button, Input, Text} from "react-native-elements";
 
@@ -9,6 +9,12 @@ const RegisterScreen = ({navigation}) => {
     const [email, setEmail] = useState ("");
     const [password, setPassword] = useState ("");
     const [profilePic, setProfilePic] = useState ("");
+
+    useLayoutEffect(() => {
+        navigation.setOptions ({
+            headerBackTitle: "Get back to Login",
+        })
+    }, [navigation])
 
     const register = () => {};
 
@@ -71,7 +77,6 @@ const styles = StyleSheet.create({
     },
     inputContainer: {
         width: 300,
-        
     },
     button: {
         width: 200,

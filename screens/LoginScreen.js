@@ -1,3 +1,4 @@
+import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react'
 import { KeyboardAvoidingView } from 'react-native';
 import { StyleSheet, Text, View } from 'react-native';
@@ -8,13 +9,15 @@ const LoginScreen = ({navigation}) => {
     const [password, setPassword] = useState ("");
 
     return (
-        <KeyboardAvoidingView behavior ="padding" style= {styles.container}>
-            <View>
+        <KeyboardAvoidingView behavior = "padding" >
+            <StatusBar style = "dark"/>
+            <View style = {styles.container}>
+                <View  style ={{height: 100}} />
                 <Image 
                     style ={{width: 400, height: 200}}
                     source ={require("./logo.png")}
                 />
-                <View>
+                <View style = {styles.inputContainer}>
                     <Input 
                         placeholder = "Email" 
                         // autoFocus 
@@ -35,7 +38,7 @@ const LoginScreen = ({navigation}) => {
 
                 <Button containerStyle = {styles.button} title = "Login"/>
                 <Button onPress = {() => navigation.navigate("Register")} containerStyle = {styles.button} title = "Register" type = "outline"/>
-
+                <View  style ={{height: 10}} />
             </View>
         </KeyboardAvoidingView>
         
@@ -47,7 +50,13 @@ export default LoginScreen
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: "center"
+        alignItems: "center",
+        justifyContent: "center",
+        padding: 10,
+        backgroundColor: "white",
+    },
+    inputContainer: {
+        width: 300,
     },
     button: {
         width: 200,
