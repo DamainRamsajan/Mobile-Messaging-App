@@ -1,11 +1,16 @@
 import { StatusBar } from 'expo-status-bar'
 import React, { useState } from 'react'
-import { StyleSheet, Text, View,KeyboardAvoidingView } from 'react-native';
-import {Button, Input} from "react-native-elements";
+import { StyleSheet, View,KeyboardAvoidingView } from 'react-native';
+import {Button, Input, Text} from "react-native-elements";
 
 const RegisterScreen = ({navigation}) => {
 
     const [name, setName] = useState ("");
+    const [email, setEmail] = useState ("");
+    const [password, setPassword] = useState ("");
+    const [profilePic, setProfilePic] = useState ("");
+
+    const register = () => {};
 
     return (
         <KeyboardAvoidingView behavior = "padding" style = {styles.container}>
@@ -22,7 +27,34 @@ const RegisterScreen = ({navigation}) => {
                     value = {name}
                     onChangeText = {(text) => setName(text)}
                 />
+                <Input 
+                    placeholder = "Email"
+                    type = "email"
+                    value = {email}
+                    onChangeText = {(text) => setEmail(text)}
+                />
+                <Input 
+                    placeholder = "Password"
+                    type = "password"
+                    value = {password}
+                    secureTextEntry
+                    onChangeText = {(text) => setPassword(text)}
+                />
+                <Input 
+                    placeholder = "Profile Picture url (optional)"
+                    type = "text"
+                    value = {profilePic}
+                    onChangeText = {(text) => setProfilePic(text)}
+                    onSubmitEditing = {register}
+                />
             </View>
+
+            <Button 
+                onPress = {register}
+                title = "Register"
+                raised
+                containerStyle = {styles.button}
+            />
         </KeyboardAvoidingView>
     )
 }
@@ -31,10 +63,19 @@ export default RegisterScreen
 
 const styles = StyleSheet.create({
     container: {
-
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: "center",
+        padding: 10,
+        backgroundColor: "white",
     },
     inputContainer: {
-
+        width: 300,
+        
+    },
+    button: {
+        width: 200,
+        marginTop: 10,
     }
 
 })
