@@ -2,9 +2,9 @@ import React from 'react'
 import { StyleSheet, Text, View } from 'react-native';
 import {ListItem, Avatar} from "react-native-elements";
 
-const CustomListItem = () => {
+const CustomListItem = ({id, chatName, enterChat}) => {
     return (
-        <ListItem>
+        <ListItem onPress = {() => enterChat(id,chatName)} key = {id} bottomDivider> 
             <Avatar 
                 rounded
                 source = {{uri: "https://cdn1.iconfinder.com/data/icons/user-pictures/100/unknown-512.png"}}
@@ -13,7 +13,7 @@ const CustomListItem = () => {
 
             <ListItem.Content>
                 <ListItem.Title style = {{fontWeight: "800"}}>
-                    Youtube Chat
+                    {chatName}
                 </ListItem.Title>
                 <ListItem.Subtitle numberOfLines = {1} ellipsizeMode = "tail">
                     This is a test subtitle
